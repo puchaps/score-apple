@@ -1,6 +1,19 @@
 .directory {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  width: 1000px;
+  height: 600px;
+  margin: 0 auto;
+  margin-top: 50px;
+  border: 1px solid black;
+  overflow: hidden;
 }
+
+.directory-slider {
+  width: 5000px;
+  position: relative;
+  left: 0;
+  transition: all ease 1.5s;
+}
+
+
+
+
