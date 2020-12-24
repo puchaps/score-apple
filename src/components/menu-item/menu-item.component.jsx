@@ -1,13 +1,15 @@
 import './menu-item.styles.scss';
 
-const MenuItem = ({title}) => {
+import { withRouter } from 'react-router';
+
+const MenuItem = ({title, history, match}) => {
   return(
     <div className="menu-item">
       <div className="btn">
-        <button>{title}</button>
+        <button onClick = {() => history.push(`${match.url}${title}`)}>{title}</button>
       </div>
     </div>
   )
 };
 
-export default MenuItem;
+export default withRouter(MenuItem);

@@ -1,10 +1,14 @@
 .catalog-item {
   position: relative;
   float: left;
+  cursor: pointer;
 
+  &:hover .content {
+    box-shadow: 0 4px 25px #fcfcfc;
+  }
   & .background-img {
     width: 1000px;
-    height: 597px;
+    height: 598px;
     position: relative;
     background-position: center;
     background-size: cover;
@@ -17,7 +21,7 @@
     background-color: #fff;
     padding: 10px 30px;
     border: 1px solid black;
-    opacity: 0.6;
+    opacity: 0.8;
 
     .title {
       font-weight: bold;
