@@ -2,7 +2,7 @@ import React from 'react';
 
 import './home-page.styles.scss';
 
-import { DATA_HOME_PAGE } from '../../../data/data';
+import { DATA_HOME_PAGE } from './home-page.data';
 
 import Directory from '../../directory/directory.component';
 import {handleSliderTimeOut} from './utilit-slaider';
