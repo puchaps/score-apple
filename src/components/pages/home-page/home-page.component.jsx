@@ -2,7 +2,7 @@ import React from 'react';
 
 import './home-page.styles.scss';
 
-import { DATA_APPLE } from '../../../data/data';
+import { DATA_HOME_PAGE } from '../../../data/data';
 
 import Directory from '../../directory/directory.component';
 import {handleSliderTimeOut} from './utilit-slaider';
@@ -10,11 +10,11 @@ import Menu from '../../menu/menu.component';
 
 
 class HomePage extends React.Component{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.myRef = React.createRef();
     this.state = {
-      catalog: DATA_APPLE
+      catalog: DATA_HOME_PAGE
     }
   };
 
