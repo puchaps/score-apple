@@ -4,7 +4,7 @@ import './shop-page.styles.scss';
 
 import { DATA_SHOP_PAGE } from './shop-page.data';
 
-import ProductItem from '../../product-item/product-item.component';
+import CollectionPreview from '../../components/collection-preview/collection-preview.component';
 
 class ShopPage extends React.Component {
   state = {
@@ -14,16 +14,14 @@ class ShopPage extends React.Component {
   render() {
     const{products} = this.state;
 
-    const mapWithUseProducts = products.map( ({ id, ...otherDataProps}) => {
-      return(
-        <ProductItem key = {id} {...otherDataProps}/>
-      )
-    });
+    const mapWithUseProducts = products.map( ({ id, ...otherDataProps}) => (
+      <CollectionPreview key = {id} {...otherDataProps}/>
+    ));
 
     return(
       <div className="shop-page">
         <div className="title">
-          <h1>All catalog</h1>
+          <h1>ALL CATALOG</h1>
         </div>
         <div className="all-products">
           {mapWithUseProducts}

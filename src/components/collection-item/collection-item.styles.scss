@@ -1,0 +1,39 @@
+.collection-item {
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  align-items: center;
+
+  .image {
+    width: 70%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .image.watch {
+    background-position: center;
+  }
+
+  .image.mac {
+    width: 420px;
+  }
+
+  .collection-footer {
+    text-align: center;
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+
+    .price {
+      font-size: 20px;
+      font-weight: 500;
+      margin-top: 10px;
+    }
+
+    .name {
+      font-size: 17px;
+    }
+  }
+}
