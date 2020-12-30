@@ -1,0 +1,37 @@
+.header {
+  height: 70px;
+  width: 1000px;
+  margin: 0 auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .container-logo {
+    height: 100%;
+    width: 50px;;
+  }
+
+  .logo {
+    width: 100%;
+  }
+
+  .nav-link {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    .link {
+      padding: 10px 15px;
+      transition: all 0.5s;
+      opacity: 0.7;
+    }
+
+    .link:hover {
+      opacity: 1;
+      border-bottom: 2px solid #231f20;
+    }
+  }
+}

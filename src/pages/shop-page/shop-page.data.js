@@ -233,7 +233,7 @@ export const DATA_SHOP_PAGE  = [
         price: 25
       },
       {
-        id: 34,
+        id: 3,
         name: 'Watch Series 6 44mm 32gb Red Aluminum',
         imageUrl: 'https://cdn.tmobile.com/content/dam/t-mobile/en-p/internet-devices/apple/Apple-Watch-Series-6-44mm/PRODUCT-RED-Aluminum-Red/Apple-Watch-Series-6-44mm-PRODUCT-RED-Aluminum-Red-frontimage.png',
         price: 25

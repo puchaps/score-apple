@@ -1,4 +1,5 @@
 .collection-item {
+  position: relative;
   width: 310px;
   display: flex;
   flex-direction: column;
@@ -17,7 +18,14 @@
   }
 
   .image.mac {
-    width: 420px;
+    width: 350px;
+
+
+  }
+
+  .collection-footer.mac {
+    position: absolute;
+    bottom: 20px;
   }
 
   .collection-footer {
