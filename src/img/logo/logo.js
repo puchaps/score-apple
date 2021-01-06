@@ -1,1 +1,1 @@
-export const LOGO_URL = 'https://png2.cleanpng.com/sh/bd882263932181ddd561f786a460f973/L0KzQYi4UsIxN5tufZGAYUPkQoi5UfVkPJRoSZC6NUO4QIm9UcE2OWQ8TqIANEW8RoiCVMY0P191htk=/5a3a2721ec4cc1.15350861151376054596794637.png'
+export const LOGO_URL = 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg'

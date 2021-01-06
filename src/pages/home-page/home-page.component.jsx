@@ -5,8 +5,8 @@ import './home-page.styles.scss';
 import { DATA_HOME_PAGE } from './home-page.data';
 import {handleSliderTimeOut} from './utilit-slaider';
 
-import Directory from '../../components/directory/directory.component';
-import Menu from '../../components/menu/menu.component';
+import Directory from '../../components/home-component/directory/directory.component';
+import Menu from '../../components/home-component/menu/menu.component';
 
 
 class HomePage extends React.Component{

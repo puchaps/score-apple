@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import './header.styles.scss';
 
-import { LOGO_URL } from '../../img/logo/logo';
+import { LOGO_URL } from '../../../img/logo/logo';
 
 const Header = () => {
   
@@ -17,8 +17,8 @@ const Header = () => {
         <Link className="link" to = '/shop'>
           APPLE STORE
         </Link>
-        <Link className="link" to = '/shop'>
-          CONTACT
+        <Link className="link" to = '/login'>
+          LOGIN
         </Link>
       </div>
     </header>

@@ -4,7 +4,7 @@ import './shop-page.styles.scss';
 
 import { DATA_SHOP_PAGE } from './shop-page.data';
 
-import CollectionPreview from '../../components/collection-preview/collection-preview.component';
+import CollectionPreview from '../../components/shop-component/collection-preview/collection-preview.component';
 
 class ShopPage extends React.Component {
   state = {
