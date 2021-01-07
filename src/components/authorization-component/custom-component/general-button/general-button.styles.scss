@@ -10,14 +10,19 @@
   font-weight: 500;
   border: 1px solid  #231f20;
   transition: all 0.5s;
-  background-color: white;
+  background-color: #231f20;
+  color: white;
   cursor: pointer;
   opacity: 0.8;
 
   &:hover {
-    color: white;
     background-color: #231f20;
     box-shadow: 0 4px 5px #231f20;
     opacity: 1;
+  }
+
+  &.red {
+    background-color: #e13f2a;
+    color: white;
   }
 }

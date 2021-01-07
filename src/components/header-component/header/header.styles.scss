@@ -17,21 +17,25 @@
   }
 
   .nav-link {
-    width: 50%;
+    width: 250px;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    
-    .link {
-      padding: 10px 15px;
-      transition: all 0.5s;
-      opacity: 0.7;
-    }
 
-    .link:hover {
-      opacity: 1;
-      border-bottom: 2px solid #231f20;
+    &:first-child {
+      padding: 0;
+    }
+    
+    .link, .sign-out {
+      padding: 0 10px 3px 10px;
+      opacity: 0.7;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        border-bottom: 1px solid #231f20;
+      }
     }
   }
 }

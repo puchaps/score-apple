@@ -1,8 +1,8 @@
 import './general-button.styles.scss';
 
-const GeneralButton = ({children, ...otherProps}) => {
+const GeneralButton = ({children, bgColor = '', ...otherProps}) => {
   return(
-    <button className="general-button" {...otherProps}>
+    <button className = {`general-button ${bgColor}`} {...otherProps}>
       {children}
     </button>
   )
