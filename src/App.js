@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 
+import { AUTH, createUserAuthInFireStore } from './firebase/firebase.utils';
+
 import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop-page.component';
-
 import AuthorizationPage from './pages/authorization-page/authorization-page.component';
 import Header from './components/header-component/header/header.component';
-import { AUTH } from './firebase/firebase.utils';
 
 class App extends React.Component{
   state = {
@@ -18,10 +18,23 @@ class App extends React.Component{
   unSubscribeAuth = null;
 
   componentDidMount = () => {
-    this.unSubscribeAuth = AUTH.onAuthStateChanged( user => {
-      this.setState({
-        currentUser: user
-      });
+    this.unSubscribeAuth = AUTH.onAuthStateChanged( async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserAuthInFireStore(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+            this.setState({
+              currentUser: {
+                id: userAuth.uid,
+                ...snapShot.data()
+              }
+            });
+        });
+      } else {
+        this.setState({
+          currentUser: userAuth
+        });
+      }
     });
   };
 

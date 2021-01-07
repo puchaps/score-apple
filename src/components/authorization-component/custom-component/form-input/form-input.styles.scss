@@ -1,11 +1,9 @@
 $sub-color: grey;
-$main-color: black;
 
 @mixin shrinkLabel {
-  top: -24px;
-  left: -20px;
-  font-size: 19px;
-  color: $main-color;
+  left: -50px;
+  font-size: 15px;
+  color: $sub-color;
 }
 
 .login-from {
@@ -16,13 +14,13 @@ $main-color: black;
     background: none;
     background-color: white;
     color: $sub-color;
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 10px 10px 5px;
     display: block;
     width: 100%;
     border: none;
     border-radius: 5px;
-    margin: 25px 0;
+    margin: 20px 0;
 
     &:focus {
       outline: none;

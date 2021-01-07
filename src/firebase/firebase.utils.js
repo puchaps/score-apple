@@ -23,6 +23,30 @@ provider.setCustomParameters({
   prompt: 'select_account'
 });
 
+export const createUserAuthInFireStore = async (userAuth) => {
+  if (!userAuth) return;
+
+  const userRef = FIRE_STORE.doc(`users/${userAuth.uid}`);
+  const snapShot = await userRef.get();
+
+  if (!snapShot.exists) {
+    const{displayName, email} = userAuth;
+    const createDete = new Date();
+
+    try{
+      await userRef.set({
+        displayName,
+        email,
+        createDete
+      });
+    } catch(error) {
+      console.log(error.massege);
+    }
+  }
+
+  return userRef;
+}
+
 export const signInWithGoogleAcount = () => AUTH.signInWithPopup(provider);
 
 export default firebase;
