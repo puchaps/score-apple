@@ -4,6 +4,7 @@ import './sign-in.styles.scss';
 
 import FormInput from '../custom-component/form-input/form-input.component';
 import GeneralButton from '../custom-component/general-button/general-button.component';
+import { signInWithGoogleAcount } from '../../../firebase/firebase.utils';
 
 class SignIn extends React.Component{
   state = {
@@ -18,7 +19,6 @@ class SignIn extends React.Component{
       email: '',
       password: ''
     });
-    console.log(this.state)
   };
 
   handleChange = (event) => {
@@ -31,7 +31,6 @@ class SignIn extends React.Component{
 
   render() {
     const{email, password} = this.state;
-
     return(
       <div className="sign-in">
         <h2 className="sign-in-title">I aleady have an account</h2>
@@ -53,7 +52,10 @@ class SignIn extends React.Component{
             required
             handleChange = {this.handleChange}
           />
-          <GeneralButton type = 'sumbit'>Sing in</GeneralButton>
+          <div className="sign-in-btns">
+            <GeneralButton>Sing in</GeneralButton>
+            <GeneralButton onClick = {signInWithGoogleAcount}>Sing in with Google</GeneralButton>
+          </div>
         </form>
       </div>
     )
