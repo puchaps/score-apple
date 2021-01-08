@@ -1,26 +1,21 @@
-.sign-in {
+.sign-up {
   width: 350px;
   margin: 0 auto;
   opacity: 0.8;
 
-  .sign-in-title {
+  .sign-up-title {
     font-size: 22px;
     font-weight: 500;
     opacity: 0.8;
     margin-bottom: 10px;
   }
 
-  .sign-in-subtitle {
+  .sign-up-subtitle {
     font-size: 16px;
     opacity: 0.8;
   }
 
-  .sign-in-form {
+  .sign-up-form {
     margin-top: 10px;
-  }
-
-  .sign-in-btns {
-    display: flex;
-    justify-content: space-between;
   }
 }

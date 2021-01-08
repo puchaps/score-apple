@@ -18,7 +18,7 @@ class App extends React.Component{
   unSubscribeAuth = null;
 
   componentDidMount = () => {
-    this.unSubscribeAuth = AUTH.onAuthStateChanged( async userAuth => {
+    this.unSubscribeAuth = AUTH.onAuthStateChanged( async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserAuthInFireStore(userAuth);
 
@@ -45,6 +45,7 @@ class App extends React.Component{
   render() {
     const{currentUser} = this.state;
 
+    console.log(currentUser)
     return (
       <div className = 'app'>
         <Header currentUser = {currentUser}/>

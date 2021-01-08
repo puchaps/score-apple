@@ -2,9 +2,10 @@ import React from 'react';
 
 import './sign-in.styles.scss';
 
+import { AUTH, signInWithGoogleAcount } from '../../../firebase/firebase.utils';
+
 import FormInput from '../custom-component/form-input/form-input.component';
 import GeneralButton from '../custom-component/general-button/general-button.component';
-import { signInWithGoogleAcount } from '../../../firebase/firebase.utils';
 
 class SignIn extends React.Component{
   state = {
@@ -12,13 +13,21 @@ class SignIn extends React.Component{
     password: ''
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
 
-    this.setState({
-      email: '',
-      password: ''
-    });
+    const{email, password} = this.state;
+
+    try {
+      await AUTH.signInWithEmailAndPassword(email, password);
+
+      this.setState({
+        email: '',
+        password: ''
+      });
+    } catch(error) {
+      console.log(error.message);
+    }
   };
 
   handleChange = (event) => {
@@ -35,11 +44,11 @@ class SignIn extends React.Component{
       <div className="sign-in">
         <h2 className="sign-in-title">I aleady have an account</h2>
         <div className="sign-in-subtitle">Sign in with your email and password</div>
-        <form className="sign-form" onSubmit = {this.handleSubmit}>
+        <form className="sign-in-form" onSubmit = {this.handleSubmit}>
           <FormInput 
             name = 'email'
             type = 'email'
-            label = 'email'
+            label = 'Email'
             value = {email}
             required
             handleChange = {this.handleChange}
@@ -47,7 +56,7 @@ class SignIn extends React.Component{
           <FormInput
             name = 'password'
             type = 'password'
-            label = 'password'
+            label = 'Password'
             value = {password}
             required
             handleChange = {this.handleChange}
@@ -56,7 +65,8 @@ class SignIn extends React.Component{
             <GeneralButton>Sing in</GeneralButton>
             <GeneralButton 
               onClick = {signInWithGoogleAcount} 
-              bgColor = 'red'>
+              bgColor = 'red'
+              type = 'button'>
                 Sing in with Google
             </GeneralButton>
           </div>

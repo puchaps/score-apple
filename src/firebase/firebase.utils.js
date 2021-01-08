@@ -23,7 +23,7 @@ provider.setCustomParameters({
   prompt: 'select_account'
 });
 
-export const createUserAuthInFireStore = async (userAuth) => {
+export const createUserAuthInFireStore = async (userAuth, otherData) => {
   if (!userAuth) return;
 
   const userRef = FIRE_STORE.doc(`users/${userAuth.uid}`);
@@ -37,7 +37,8 @@ export const createUserAuthInFireStore = async (userAuth) => {
       await userRef.set({
         displayName,
         email,
-        createDete
+        createDete,
+        ...otherData
       });
     } catch(error) {
       console.log(error.massege);
