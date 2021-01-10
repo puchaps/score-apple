@@ -1,4 +1,4 @@
-export const DATA_HOME_PAGE = [
+export const HOME_DATA = [
   {
     title: 'iPhone', 
     imageUrl: 'https://cdn.mos.cms.futurecdn.net/3oqmv4bAtKt3uJFdPzwxch.jpeg',

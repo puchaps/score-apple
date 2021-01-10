@@ -2,13 +2,13 @@ import React from 'react';
 
 import './shop-page.styles.scss';
 
-import { DATA_SHOP_PAGE } from './shop-page.data';
+import { SHOP_DATA } from '../../data/shop-page-data/shop.data';
 
 import CollectionPreview from '../../components/shop-component/collection-preview/collection-preview.component';
 
 class ShopPage extends React.Component {
   state = {
-    products: DATA_SHOP_PAGE
+    products: SHOP_DATA
   };
 
   render() {

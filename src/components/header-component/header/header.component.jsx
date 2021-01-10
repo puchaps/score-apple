@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './header.styles.scss';
 
@@ -17,8 +18,8 @@ const Header = ({currentUser}) => {
         <Link className="link" to = '/shop'>
           APPLE STORE
         </Link>
-        <Link className="link" to = '/login'>
-          LOGIN
+        <Link className="link" to = '/shop'>
+          CONTENT
         </Link>
         {
           currentUser ?
@@ -35,4 +36,10 @@ const Header = ({currentUser}) => {
   )
 };
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.userAuth.currentUser
+  }
+};
+
+export default  connect(mapStateToProps)(Header);

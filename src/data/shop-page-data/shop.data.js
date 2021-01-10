@@ -1,5 +1,5 @@
 
-export const DATA_SHOP_PAGE  = [
+export const SHOP_DATA  = [
   {
     id: 1,
     title: 'iPhone',

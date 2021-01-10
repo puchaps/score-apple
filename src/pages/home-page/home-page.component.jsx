@@ -2,8 +2,8 @@ import React from 'react';
 
 import './home-page.styles.scss';
 
-import { DATA_HOME_PAGE } from './home-page.data';
-import {handleSliderTimeOut} from './utilit-slaider';
+import { HOME_DATA } from '../../data/home-page-data/home.data';
+import {handleSliderTimeOut} from './utils/utilit-slaider';
 
 import Directory from '../../components/home-component/directory/directory.component';
 import Menu from '../../components/home-component/menu/menu.component';
@@ -14,7 +14,7 @@ class HomePage extends React.Component{
     super(props);
     this.myRef = React.createRef();
     this.state = {
-      catalog: DATA_HOME_PAGE
+      catalog: HOME_DATA
     }
   };
 
