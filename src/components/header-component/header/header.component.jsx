@@ -6,6 +6,9 @@ import './header.styles.scss';
 import { LOGO_URL } from '../../../img/logo/logo';
 import { AUTH } from '../../../firebase/firebase.utils';
 
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+
 const Header = ({currentUser}) => {
   return(
     <header className="header">
@@ -31,7 +34,9 @@ const Header = ({currentUser}) => {
               SIGN IN
             </Link>)
         }
+        <CartIcon/>
       </div>
+      <CartDropdown/>
     </header>
   )
 };

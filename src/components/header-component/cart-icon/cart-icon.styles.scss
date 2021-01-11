@@ -1,0 +1,26 @@
+.cart-icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.6;
+  margin-left: 10px;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .img {
+    width: 100%;
+  }
+
+  .choosed-items {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    bottom: 6px;
+  }
+}

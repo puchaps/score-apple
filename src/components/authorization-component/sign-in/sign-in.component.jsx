@@ -4,8 +4,8 @@ import './sign-in.styles.scss';
 
 import { AUTH, signInWithGoogleAcount } from '../../../firebase/firebase.utils';
 
-import FormInput from '../custom-component/form-input/form-input.component';
-import GeneralButton from '../custom-component/general-button/general-button.component';
+import FormInput from '../../custom-component/form-input/form-input.component';
+import GeneralButton from '../../custom-component/general-button/general-button.component';
 
 class SignIn extends React.Component{
   state = {

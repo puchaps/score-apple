@@ -4,8 +4,8 @@ import './sign-up.styles.scss';
 
 import { AUTH, createUserAuthInFireStore } from '../../../firebase/firebase.utils';
 
-import FormInput from '../custom-component/form-input/form-input.component';
-import GeneralButton from '../custom-component/general-button/general-button.component';
+import FormInput from '../../custom-component/form-input/form-input.component';
+import GeneralButton from '../../custom-component/general-button/general-button.component';
 
 class SignUp extends React.Component {
   state = {
