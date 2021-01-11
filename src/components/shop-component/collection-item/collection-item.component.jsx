@@ -1,15 +1,8 @@
 import './collection-item.styles.scss';
 
-const CollectionItem = ({ imageUrl, name, price, title }) => {
-  let additionalClass;
-  if (title == 'MacBock' || title == 'AirPods' || title == 'iPad' || title == 'AirPods' || title == 'AppleWatch') {
-    additionalClass = title.toLowerCase();
-  } else {
-    additionalClass = ''
-  }
-  
+const CollectionItem = ({ imageUrl, name, price, title }) => {  
   return(
-    <div className={`collection-item ${additionalClass}`}>
+    <div className={`collection-item ${title.toLowerCase()}`}>
       <div className="image">
         <img src={imageUrl} alt="item" className="img"/>
       </div>
