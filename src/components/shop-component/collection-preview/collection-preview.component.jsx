@@ -6,7 +6,7 @@ import CollectionItem from '../collection-item/collection-item.component';
 const CollectionPreview = ({title, items}) => {
   const mapMithUseItems = items.filter( (item, index) => index < 4)
     .map( ({id, ...otherDataProps}) => (
-      <CollectionItem key = {id} {...otherDataProps}/>
+      <CollectionItem key = {id} {...otherDataProps} title = {title}/>
     ));
   
   return(

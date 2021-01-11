@@ -1,17 +1,19 @@
 import './collection-item.styles.scss';
-import { setAttributeForMac, setAttributeForWatch } from './collection-item.utils';
 
-const CollectionItem = ({ imageUrl, name, price }) => {
-  const  resoleveMac = setAttributeForMac(name);
-  const  resoleveWatch = setAttributeForWatch(name);
-
+const CollectionItem = ({ imageUrl, name, price, title }) => {
+  let additionalClass;
+  if (title == 'MacBock' || title == 'AirPods' || title == 'iPad' || title == 'AirPods' || title == 'AppleWatch') {
+    additionalClass = title.toLowerCase();
+  } else {
+    additionalClass = ''
+  }
+  
   return(
-    <div className="collection-item">
-      <div 
-        className = {`image ${resoleveWatch ? 'watch' : ''} ${resoleveMac ? 'mac' : ''}`} 
-        style = {{backgroundImage: `url(${imageUrl})`}}
-      />
-      <div className={`collection-footer ${resoleveMac ? 'mac' : ''}`}>
+    <div className={`collection-item ${additionalClass}`}>
+      <div className="image">
+        <img src={imageUrl} alt="item" className="img"/>
+      </div>
+      <div className={`collection-footer`}>
         <span className="name">{name}</span>
         <span className="price">$ {price}</span>
       </div>

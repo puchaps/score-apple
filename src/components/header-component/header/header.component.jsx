@@ -36,7 +36,7 @@ const Header = ({currentUser}) => {
         }
         <CartIcon/>
       </div>
-      <CartDropdown/>
+      {/* <CartDropdown/> */}
     </header>
   )
 };

@@ -2,9 +2,10 @@
   position: relative;
   float: left;
   cursor: pointer;
+  transform: all 0.5s;
 
   &:hover .content {
-    box-shadow: 0 4px 25px #fcfcfc;
+    box-shadow: 0 4px 25px black;
   }
   & .background-img {
     width: 1000px;
@@ -18,10 +19,9 @@
     position: absolute;
     left: 30px;
     top: 50px;
-    background-color: #fff;
+    color: #fff;
     padding: 10px 30px;
-    border: 1px solid black;
-    opacity: 0.8;
+    border: 1px solid#fff;
 
     .title {
       font-weight: bold;
