@@ -22,12 +22,12 @@
     opacity: 1;
   }
 
-  &.red {
+  &.google {
     background-color: #e13f2a;
     color: white;
   }
 
-  &.greey {
+  &.add-cart {
     display: none;
     background-color: #231f20;
     width: 100%;
@@ -36,6 +36,12 @@
       box-shadow: 0 4px 25px #231f20;
       opacity: 1;
     }
+  }
+
+  &.go-to {
+    margin-top: 0;
+    background-color: #e13f2a;
+    color: white;
   }
   
 }

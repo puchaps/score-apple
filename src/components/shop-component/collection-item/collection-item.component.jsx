@@ -1,8 +1,14 @@
+import { connect } from 'react-redux';
+
 import './collection-item.styles.scss';
+
+import { addItemToCartAC } from '../../../redux/reducers/cart-reducer/actions/cart.actions';
 
 import GeneralButton from '../../custom-component/general-button/general-button.component'
 
-const CollectionItem = ({ imageUrl, name, price, title }) => {  
+const CollectionItem = ({item, title, addItemToCart }) => {  
+  const{ imageUrl, name, price } = item;
+
   return(
     <div className={`collection-item ${title.toLowerCase()}`}>
       <div className="image">
@@ -12,11 +18,20 @@ const CollectionItem = ({ imageUrl, name, price, title }) => {
         <span className="name">{name}</span>
         <span className="price">$ {price}</span>
       </div>
-      <GeneralButton bgColor = 'greey'>
+      <GeneralButton typeBtn = 'add-cart' onClick = {() => addItemToCart(item)}>
         ADD TO CART
       </GeneralButton>
     </div>
   )
 };
 
-export default CollectionItem;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addItemToCart: (item) => dispatch(addItemToCartAC(item))
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CollectionItem);

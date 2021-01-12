@@ -65,7 +65,7 @@ class SignIn extends React.Component{
             <GeneralButton>Sing in</GeneralButton>
             <GeneralButton 
               onClick = {signInWithGoogleAcount} 
-              bgColor = 'red'
+              typeBtn = 'google'
               type = 'button'>
                 Sing in with Google
             </GeneralButton>

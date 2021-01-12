@@ -1,19 +1,24 @@
 .cart-dropdown {
   position: absolute;
-  width: 240px;
-  height: 340px;
+  width: 270px;
+  height: 370px;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  justify-content: space-between;
+  padding: 10px;
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: white;
-  opacity: 0.95;
+  opacity: 0.9;
   top: 90px;
   right: 300px;
   z-index: 5;
 
+  &.fixsed {
+    position: fixed;
+  }
+
   .choosed-items{
-    height: 240px;
+    height: 290px;
     display: flex;
     flex-direction: column;
     overflow: scroll;
