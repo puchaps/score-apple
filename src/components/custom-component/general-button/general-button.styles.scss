@@ -26,4 +26,16 @@
     background-color: #e13f2a;
     color: white;
   }
+
+  &.greey {
+    display: none;
+    background-color: #231f20;
+    width: 100%;
+
+    &:hover {
+      box-shadow: 0 4px 25px #231f20;
+      opacity: 1;
+    }
+  }
+  
 }

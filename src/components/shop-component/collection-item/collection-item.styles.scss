@@ -1,8 +1,19 @@
 .collection-item {
+  position: relative;
   width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  
+  &:hover {
+    opacity: 0.9;
+
+    button {
+      display: block;
+    }
+  }
 
   .img {
     width: 200px;
@@ -26,8 +37,13 @@
   }
 }
 
+.collection-item.iphone {
+  height: 370px;
+} 
+
 .collection-item.macbock {
-  
+  height: 300px;
+
   .img {
     width: 300px;
   }
@@ -39,6 +55,7 @@
 }
 
 .collection-item.ipad {
+  height: 370px;
 
   .img {
     width: 230px;
@@ -46,6 +63,7 @@
 }
 
 .collection-item.airpods {
+  height: 300px;
 
   .img {
     width: 180px;
@@ -54,6 +72,8 @@
 } 
 
 .collection-item.applewatch {
+  height: 350px;
+
   .collection-footer {
     width: 250px;
   }
