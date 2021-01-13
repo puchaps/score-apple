@@ -18,3 +18,10 @@ export const selectorAddedsItemsFromCart = createSelector(
     return cartItems.reduce((initialValue, item) => initialValue + item.quantity, 0)
   }
 );
+
+export const selectorTotalPriceAllItemsFromCart = createSelector(
+  [selectorCartCartItems],
+  (cartItems) => {
+    return cartItems.reduce((initialValue, item) => initialValue + item.quantity * item.price, 0)
+  }
+);
