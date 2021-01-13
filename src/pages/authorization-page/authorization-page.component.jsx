@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import './authorization-page.styles.scss';
 
+import { selectorUserAuthCurrentUser } from '../../redux/reducers/userAuth-reducer/selectors/userAuth.selectors';
+
 import SignIn from '../../components/authorization-component/sign-in/sign-in.component';
 import SignUp from '../../components/authorization-component/sign-up/sign-up.component';
 
@@ -20,7 +22,7 @@ const AuthorizationPage = ({ currentUser }) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.userAuth.currentUser
+    currentUser: selectorUserAuthCurrentUser(state)
   }
 };
 

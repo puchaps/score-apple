@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './cart-icon.styles.scss';
 
 import { ReactComponent as Cart } from '../../../img/cart/cart.svg';
 import { toggleCartHiddenAC } from '../../../redux/reducers/cart-reducer/actions/cart.actions';
 
+import { selectorAddedsItemsFromCart, selectorCartHidden } from '../../../redux/reducers/cart-reducer/selectors/cart.selectors';
 
-const CartIcon = ({ cartItems, hidden, toggleCartHidden }) => {
-  const showAllItemsInCart = cartItems.reduce((initialValue, item) => item.quantity + initialValue, 0);
 
+const CartIcon = ({ addedsItemsFromCart, hidden, toggleCartHidden }) => {
   return(
     <div className = {`cart-icon ${hidden ? 'show' : ''}`} onClick = {() => toggleCartHidden()}>
       <div className="image">
@@ -16,19 +17,17 @@ const CartIcon = ({ cartItems, hidden, toggleCartHidden }) => {
       </div>
       <div className="choosed-items">
         {
-          showAllItemsInCart
+          addedsItemsFromCart
         }
       </div>
     </div>
   )
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cartItems: state.cart.cartItems,
-    hidden: state.cart.hidden
-  }
-}
+const mapStateToProps = createStructuredSelector({
+  addedsItemsFromCart: selectorAddedsItemsFromCart,
+  hidden: selectorCartHidden
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {
