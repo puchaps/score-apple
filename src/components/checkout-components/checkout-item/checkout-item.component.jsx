@@ -10,7 +10,11 @@ const CheckoutItem = ({item}) => {
       </div>
       <div className="checkout-descr">
         <div className="checkout-name">{name}</div>
-        <div className="checkout-quantity">{quantity}</div>
+        <div className="checkout-quantity">
+          <span className="checkout-arrow-minus">&#10094;</span>
+            {quantity}
+          <span className="checkout-arrow-plus">&#10095;</span>
+        </div>
         <div className="checkout-price">{price}</div>
         <div className="checkout-remove">&#10005;</div>
       </div>
