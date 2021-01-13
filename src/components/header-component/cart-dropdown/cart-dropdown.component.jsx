@@ -16,7 +16,7 @@ const CartDropdown = ({ cartItems, hidden }) => {
         }
       </div>
         <GeneralButton typeBtn = 'go-to'>
-          GO TO CHECK
+          GO TO CHECKOUT
         </GeneralButton>
     </div>
   )
