@@ -16,3 +16,26 @@ export const verifyAddItemToCart = (currentCartItems, addItem) => {
 
   return [ ...currentCartItems, { ...addItem, quantity: 1} ];
 }
+
+export const reduceChoosedItemFromCart = (currentCartItems, reduceItem) => {
+  const existingItem = currentCartItems.find(item => item.id === reduceItem.id);
+
+  if (existingItem.quantity === 1) {
+    return currentCartItems.filter(item => item.id !== reduceItem.id);
+  }
+
+  return currentCartItems.map(item => {
+    if (item.id === reduceItem.id) {
+      return {
+        ...item,
+        quantity: item.quantity - 1
+      }
+    }
+
+    return item;
+  });
+}
+
+export const removeChoosedItemFromCart = (currentCartItems, removeItem) => {
+  return currentCartItems.filter(item => item.id !== removeItem.id);
+};
