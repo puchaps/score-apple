@@ -1,11 +1,14 @@
+import { connect } from 'react-redux';
 
 import './directory.styles.scss';
 
+import { selectorCollections } from '../../../redux/reducers/shop-reducer/selectors/shop.selectors';
+
 import CatalogItem from '../catalog-item/catalog-item.component';
 
-const Directory = ({catalog, myRef}) => {
+const Directory = ({collections, myRef}) => {
     
-  const getComponentFromCatalog = catalog.map(item => <CatalogItem key = {item.id} {...item}/>);
+  const getComponentFromCatalog = collections.map(item => <CatalogItem key = {item.id} {...item}/>);
 
   return(
     <div className="directory">
@@ -15,6 +18,10 @@ const Directory = ({catalog, myRef}) => {
     </div>
   )
 }
+const mapStateToProps = (state) => ({
+  collections: selectorCollections(state)
+})
 
-
-export default Directory;
+export default connect(
+  mapStateToProps
+)(Directory);

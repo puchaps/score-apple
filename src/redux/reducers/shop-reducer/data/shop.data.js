@@ -1,9 +1,10 @@
 
-export const SHOP_DATA  = [
+export const COLLECTIONS_DATA  = [
   {
     id: 1,
     title: 'iPhone',
     routeName: 'iPhone',
+    imageUrl: 'https://cdn.mos.cms.futurecdn.net/3oqmv4bAtKt3uJFdPzwxch.jpeg',
     items: [
       {
         id: 1,
@@ -65,6 +66,7 @@ export const SHOP_DATA  = [
     id: 2,
     title: 'MacBock',
     routeName: 'MacBock',
+    imageUrl: 'https://spy.com/wp-content/uploads/2020/11/m1-macbook-pro-air.png',
     items: [
       {
         id: 10,
@@ -120,6 +122,7 @@ export const SHOP_DATA  = [
     id: 3,
     title: 'AirPods',
     routeName: 'AirPods',
+    imageUrl: 'https://www.incimages.com/uploaded_files/image/1920x1080/IMG_0954_405861.jpg',
     items: [
       {
         id: 18,
@@ -163,6 +166,7 @@ export const SHOP_DATA  = [
     id: 4,
     title: 'iPad',
     routeName: 'iPad',
+    imageUrl: 'https://www.macobserver.com/wp-content/uploads/2020/04/iPad-Pro-Floats.png',
     items: [
       {
         id: 24,
@@ -212,6 +216,7 @@ export const SHOP_DATA  = [
     id: 5,
     title: 'AppleWatch',
     routeName: 'AppleWatch',
+    imageUrl: 'https://www.apple.com/newsroom/images/product/watch/standard/Apple_delivers-apple-watch-series-6_09152020.jpg.landing-big_2x.jpg',
     items: [
       {
         id: 31,
