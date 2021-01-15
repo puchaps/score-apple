@@ -7,8 +7,9 @@ import { selectorCollections } from '../../../redux/reducers/shop-reducer/select
 import CatalogItem from '../catalog-item/catalog-item.component';
 
 const Directory = ({collections, myRef}) => {
-    
-  const getComponentFromCatalog = collections.map(item => <CatalogItem key = {item.id} {...item}/>);
+  const getComponentFromCatalog = collections.map(item => {
+    return <CatalogItem key = {item.id} {...item}/>
+  });
 
   return(
     <div className="directory">

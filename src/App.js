@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 
 import './App.css';
 
-import { AUTH, createUserAuthInFireStore } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/reducers/userAuth-reducer/actions/userAuth.actions';
+import { checkUserSesionStartAC } from './redux/reducers/userAuth-reducer/actions/userAuth.actions';
 
 import HomePage from './pages/home-page/home-page.component';
 import ShopPage from './pages/shop-page/shop-page.component';
@@ -14,31 +13,12 @@ import Header from './components/header-component/header/header.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
 
 class App extends React.Component{
-  unSubscribeAuth = null;
-
   componentDidMount = () => {
-    const{setCurrentUser} = this.props;
-
-    this.unSubscribeAuth = AUTH.onAuthStateChanged( async (userAuth) => {
-      if (userAuth) {
-        const userRef = await createUserAuthInFireStore(userAuth);
-
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
+    const{checkUserSesionStart} = this.props;
+    
+    checkUserSesionStart();
   };
 
-  componentWillUnmount = () => {
-    this.unSubscribeAuth();
-  };
-  
   render() {
     return (
       <div className = 'app'>
@@ -46,8 +26,8 @@ class App extends React.Component{
         <Switch>
           <Route exact path = '/' component = {HomePage}/>
           <Route  path = '/shop' component = {ShopPage}/>
-          <Route  path = '/login' component = {AuthorizationPage}/>
-          <Route  path = '/checkout' component = {CheckoutPage}/>
+          <Route exact path = '/login' component = {AuthorizationPage}/>
+          <Route exact path = '/checkout' component = {CheckoutPage}/>
         </Switch>
       </div>
     );
@@ -56,8 +36,11 @@ class App extends React.Component{
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCurrentUser: (user) => dispatch(setCurrentUser(user))
+    checkUserSesionStart: () => dispatch(checkUserSesionStartAC())
   }
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

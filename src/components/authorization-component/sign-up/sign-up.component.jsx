@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './sign-up.styles.scss';
 
-import { AUTH, createUserAuthInFireStore } from '../../../firebase/firebase.utils';
+import { 
+  createUserEmailAndPasswordStartAC 
+} from '../../../redux/reducers/userAuth-reducer/actions/userAuth.actions';
 
 import FormInput from '../../custom-component/form-input/form-input.component';
 import GeneralButton from '../../custom-component/general-button/general-button.component';
@@ -23,9 +26,10 @@ class SignUp extends React.Component {
     });
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
+    const{createUserEmailAndPasswordStart} = this.props;
     const{displayName, email, password, confirmPassword} = this.state;
 
     if (password !== confirmPassword) {
@@ -33,20 +37,14 @@ class SignUp extends React.Component {
       return;
     }
 
-    try {
-      const{user} = await AUTH.createUserWithEmailAndPassword(email, password);
+    createUserEmailAndPasswordStart(email, password, displayName);
 
-      await createUserAuthInFireStore(user, { displayName });
-
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-      });
-    } catch(error) {
-      console.log(error.message);
-    }
+    this.setState({
+      displayName: '',
+      email: '',
+      password: '',
+      confirmPassword: ''
+    });
   }
   render() {
     const{displayName, email, password, confirmPassword} = this.state;
@@ -99,4 +97,13 @@ class SignUp extends React.Component {
   }
 };
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  createUserEmailAndPasswordStart: (email, password, displayName) => (
+    dispatch(createUserEmailAndPasswordStartAC({email, password, displayName}))
+  )
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignUp);

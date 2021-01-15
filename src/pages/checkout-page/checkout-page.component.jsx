@@ -3,7 +3,9 @@ import { createStructuredSelector } from 'reselect';
 
 import './checkout-page.styles.scss';
 
-import { selectorCartCartItems, selectorTotalPriceAllItemsFromCart } from '../../redux/reducers/cart-reducer/selectors/cart.selectors';
+import { 
+  selectorCartCartItems, selectorTotalPriceAllItemsFromCart
+} from '../../redux/reducers/cart-reducer/selectors/cart.selectors';
 
 import CheckoutTitle from '../../components/checkout-components/checkout-title/checkout-title.component';
 import CheckoutItem from '../../components/checkout-components/checkout-item/checkout-item.component';

@@ -17,9 +17,9 @@ firebase.initializeApp(config);
 export const AUTH = firebase.auth();
 export const FIRE_STORE = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
   prompt: 'select_account'
 });
 
@@ -48,6 +48,15 @@ export const createUserAuthInFireStore = async (userAuth, otherData) => {
   return userRef;
 }
 
-export const signInWithGoogleAcount = () => AUTH.signInWithPopup(provider);
+export const getUserAuthSesion = () => {
+  return new Promise((resolve, reject) => {
+    const unSubscribe = AUTH.onAuthStateChanged((userAuth) => {
+      unSubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
+export const signInWithGoogleAcount = () => AUTH.signInWithPopup(googleProvider);
 
 export default firebase;

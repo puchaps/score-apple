@@ -1,8 +1,8 @@
-import './catalog-item.styles.scss';
-
 import { withRouter } from 'react-router';
 
-const CatalogItem = ({title, imageUrl, size, history, match}) => {
+import './catalog-item.styles.scss';
+
+const CatalogItem = ({title, imageUrl, size, history}) => {
   const styleBg = {
     backgroundImage: `url(${imageUrl})`
   };
@@ -10,7 +10,7 @@ const CatalogItem = ({title, imageUrl, size, history, match}) => {
   return(
     <div 
       className={`catalog-item ${size ? size : ''}`}
-      onClick = {() => history.push(`${match.url}${title}`)}
+      onClick = {() => history.push(`/shop/${title}`)}
       >
       <div className="background-img" style = {styleBg}/>
       <div className="content">

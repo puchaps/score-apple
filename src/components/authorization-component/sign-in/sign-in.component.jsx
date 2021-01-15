@@ -1,11 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './sign-in.styles.scss';
 
-import { AUTH, signInWithGoogleAcount } from '../../../firebase/firebase.utils';
+import {
+  signInWithEmailPasswordStartAC, signInWithGoogleStartAC
+} from '../../../redux/reducers/userAuth-reducer/actions/userAuth.actions';
 
 import FormInput from '../../custom-component/form-input/form-input.component';
 import GeneralButton from '../../custom-component/general-button/general-button.component';
+
 
 class SignIn extends React.Component{
   state = {
@@ -13,21 +17,18 @@ class SignIn extends React.Component{
     password: ''
   };
 
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
+    const{signInWithEmailPasswordStart} = this.props;
     const{email, password} = this.state;
 
-    try {
-      await AUTH.signInWithEmailAndPassword(email, password);
+    signInWithEmailPasswordStart(email, password);
 
-      this.setState({
-        email: '',
-        password: ''
-      });
-    } catch(error) {
-      console.log(error.message);
-    }
+    this.setState({
+      email: '',
+      password: ''
+    });
   };
 
   handleChange = (event) => {
@@ -40,6 +41,8 @@ class SignIn extends React.Component{
 
   render() {
     const{email, password} = this.state;
+    const{signInWithGoogleStart} = this.props;
+    
     return(
       <div className="sign-in">
         <h2 className="sign-in-title">I aleady have an account</h2>
@@ -64,7 +67,7 @@ class SignIn extends React.Component{
           <div className="sign-in-btns">
             <GeneralButton>Sing in</GeneralButton>
             <GeneralButton 
-              onClick = {signInWithGoogleAcount} 
+              onClick = {signInWithGoogleStart} 
               typeBtn = 'google'
               type = 'button'>
                 Sing in with Google
@@ -76,4 +79,12 @@ class SignIn extends React.Component{
   }
 };
 
-export default SignIn;
+const mapDispatchToProps = (dispath) => ({
+  signInWithGoogleStart: () => dispath(signInWithGoogleStartAC()),
+  signInWithEmailPasswordStart: (email, password) => dispath(signInWithEmailPasswordStartAC({email, password}))
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignIn);
