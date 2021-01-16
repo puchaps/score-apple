@@ -48,6 +48,19 @@ export const createUserAuthInFireStore = async (userAuth, otherData) => {
   return userRef;
 }
 
+export const addCollectionAndDocumentsInFiresote = async (nameCollection, addDocoments) => {
+  const collectionRef = FIRE_STORE.collection(nameCollection);
+
+  const batch = FIRE_STORE.batch();
+
+  addDocoments.forEach(item => {
+    const itemRef = collectionRef.doc();
+    batch.set(itemRef, item);
+  });
+
+  return await batch.commit();
+}
+
 export const getUserAuthSesion = () => {
   return new Promise((resolve, reject) => {
     const unSubscribe = AUTH.onAuthStateChanged((userAuth) => {
