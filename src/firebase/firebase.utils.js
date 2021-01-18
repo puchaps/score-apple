@@ -61,6 +61,22 @@ export const addCollectionAndDocumentsInFiresote = async (nameCollection, addDoc
   return await batch.commit();
 }
 
+export const getCollectionsFromFiresoter = (snapShotCollections) => {
+  const transformGetedCollection = snapShotCollections.docs.map(item => {
+    const{title, imageUrl, items} = item.data();
+    
+    return {
+      title,
+      imageUrl,
+      routeName: title.toLowerCase(),
+      id: item.id,
+      items
+    }
+  });
+
+  return transformGetedCollection;
+} 
+
 export const getUserAuthSesion = () => {
   return new Promise((resolve, reject) => {
     const unSubscribe = AUTH.onAuthStateChanged((userAuth) => {
