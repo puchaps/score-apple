@@ -11,19 +11,12 @@ import ShopPage from './pages/shop-page/shop-page.component';
 import AuthorizationPage from './pages/authorization-page/authorization-page.component';
 import Header from './components/header-component/header/header.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
-import { selectorCollections } from './redux/reducers/shop-reducer/selectors/shop.selectors';
-import { addCollectionAndDocumentsInFiresote } from './firebase/firebase.utils';
 
 class App extends React.Component{
   componentDidMount = () => {
-    const{checkUserSesionStart, collections} = this.props;
+    const{checkUserSesionStart} = this.props;
     
     checkUserSesionStart();
-    addCollectionAndDocumentsInFiresote('collections', collections.map(({title, imageUrl, items}) => ({
-      title,
-      imageUrl,
-      items
-    })));
   };
 
   render() {
@@ -41,10 +34,6 @@ class App extends React.Component{
   }
 }
 
-const mapStateToProps = state => ({
-  collections: selectorCollections(state)
-})
-
 const mapDispatchToProps = (dispatch) => {
   return {
     checkUserSesionStart: () => dispatch(checkUserSesionStartAC())
@@ -52,6 +41,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(App);
