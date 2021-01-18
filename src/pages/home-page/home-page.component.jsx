@@ -6,6 +6,7 @@ import {handleSliderTimeOut} from './utils/utilit-slaider';
 
 import Directory from '../../components/home-component/directory/directory.component';
 import Menu from '../../components/home-component/menu/menu.component';
+import Footer from '../../components/footer-components/footer.component';
 
 class HomePage extends React.Component{
   constructor(props) {
@@ -22,6 +23,7 @@ class HomePage extends React.Component{
       <div className="home-page">
         <Menu/>
         <Directory myRef = {this.myRef}/>
+        <Footer/>
       </div>
     );
   };

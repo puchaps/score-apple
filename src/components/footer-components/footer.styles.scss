@@ -1,0 +1,47 @@
+.footer {
+  width: 1130px;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  .footer-icon {
+    width: 100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+
+    .icon img {
+      width: 30px;
+      height: 30px;
+      transition: all 0.4s;
+      opacity: 0.8;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+  }
+
+  .footer-text {
+    width: 130px;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+
+    .text {
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .footer-year {
+    width: 50px;
+    margin: 0 auto;
+    margin-top: 5px;
+    opacity: 0.4;
+  }
+}
