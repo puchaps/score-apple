@@ -24,9 +24,6 @@ const Header = ({ currentUser, hidden, signOutStart}) => {
         <Link className="link" to = '/shop'>
           APPLE STORE
         </Link>
-        <Link className="link" to = '/shop'>
-          CONTENT
-        </Link>
         {
           currentUser ?
             (<div className="sign-out" onClick = {signOutStart}>
@@ -38,8 +35,9 @@ const Header = ({ currentUser, hidden, signOutStart}) => {
             </Link>)
         }
         <CartIcon/>
+        { hidden ? <CartDropdown/> : null}
       </div>
-      { hidden ? <CartDropdown/> : null}
+      
     </header>
   )
 };

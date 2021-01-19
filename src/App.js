@@ -15,6 +15,7 @@ import AuthorizationPage from './pages/authorization-page/authorization-page.com
 import Header from './components/header-component/header/header.component';
 import CheckoutPage from './pages/checkout-page/checkout-page.component';
 import SpinnerWrapper from './components/custom-component/spinner-wrapper/spinner-wrapper.component';
+import Footer from './components/footer-components/footer.component';
 
 
 class App extends React.Component{
@@ -56,6 +57,7 @@ class App extends React.Component{
           <Route exact path = '/login' component = {AuthorizationPage}/>
           <Route exact path = '/checkout' component = {CheckoutPage}/>
         </Switch>
+        <Footer/>
       </div>
     );
   }

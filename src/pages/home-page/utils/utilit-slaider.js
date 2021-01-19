@@ -6,9 +6,9 @@ export const handleSliderTimeOut = (elem) => {
     timeInterval = setInterval(() => {
       const directorySlider = elem;
     
-      left = left - 1000;
+      left = left - 800;
   
-      if (left < -4000) {
+      if (left < -3200) {
         left = 0
       };
       directorySlider.style.left = left + 'px';

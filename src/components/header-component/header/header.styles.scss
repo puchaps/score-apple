@@ -1,6 +1,6 @@
 .header {
   height: 70px;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 20px;
   display: flex;
@@ -9,7 +9,7 @@
 
   .container-logo {
     height: 100%;
-    width: 50px;;
+    width: 40px;;
   }
 
   .logo {
@@ -17,6 +17,7 @@
   }
 
   .nav-link {
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
