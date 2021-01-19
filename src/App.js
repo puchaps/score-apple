@@ -6,7 +6,7 @@ import './App.css';
 
 import { FIRE_STORE, getCollectionsFromFiresoter } from './firebase/firebase.utils';
 import { checkUserSesionStartAC } from './redux/reducers/userAuth-reducer/actions/userAuth.actions';
-import { getCollectionsFromFirestoreAC } from './redux/reducers/shop-reducer/actions/shop.actions';
+import { getCollectionStartAC } from './redux/reducers/shop-reducer/actions/shop.actions';
 import { selectorCollections } from './redux/reducers/shop-reducer/selectors/shop.selectors';
 
 import HomePage from './pages/home-page/home-page.component';
@@ -19,26 +19,10 @@ import Footer from './components/footer-components/footer.component';
 
 
 class App extends React.Component{
-  handleGetedCollection = () => {
-    const{getCollectionsFromFirestore} = this.props;
-
-    const collectionRef = FIRE_STORE.collection('collections');
-    const snapShotCollections = collectionRef.get();
-
-    snapShotCollections.then((snapShot) => {
-      const convertCollections = getCollectionsFromFiresoter(snapShot);
-  
-      getCollectionsFromFirestore(convertCollections);
-    });
-
-
-  }
-
   componentDidMount = () => {
-    const{checkUserSesionStart} = this.props;
+    const{checkUserSesionStart, getCollectionStart} = this.props;
     
-    
-    this.handleGetedCollection();
+    getCollectionStart();
     checkUserSesionStart();
   };
 
@@ -65,7 +49,7 @@ class App extends React.Component{
 
 const mapDispatchToProps = (dispatch) => ({
   checkUserSesionStart: () => dispatch(checkUserSesionStartAC()),
-  getCollectionsFromFirestore: (collections) => dispatch(getCollectionsFromFirestoreAC(collections))
+  getCollectionStart: (collections) => dispatch(getCollectionStartAC(collections))
 })
 
 const mapStateToProps = state => ({
