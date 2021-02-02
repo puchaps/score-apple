@@ -114,7 +114,6 @@ function* checkUserSesion() {
     yield put(checkUserSesionFailedAC(error));
   }
 }
-
 function* onCheckUserSesionStart() {
   yield takeLatest(CHECK_USER_SESION_START, checkUserSesion)
 }

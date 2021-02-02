@@ -2,9 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import './App.css';
+import './App.styles.scss';
 
-import { FIRE_STORE, getCollectionsFromFiresoter } from './firebase/firebase.utils';
 import { checkUserSesionStartAC } from './redux/reducers/userAuth-reducer/actions/userAuth.actions';
 import { getCollectionStartAC } from './redux/reducers/shop-reducer/actions/shop.actions';
 import { selectorCollections } from './redux/reducers/shop-reducer/selectors/shop.selectors';
@@ -31,7 +30,8 @@ class App extends React.Component{
     
     if (!collections) {
       return <SpinnerWrapper/>
-    }
+    };
+
     return (
       <div className = 'app'>
         <Header/>
