@@ -16,7 +16,7 @@ const Footer = () => {
         </div>
         <div className="icon">
           <a href="https://github.com/puchaps">
-            <img src='https://www.flaticon.com/svg/vstatic/svg/2111/2111425.svg?token=exp=1611006235~hmac=c4e4969f037a7c2da8f9b11d2b6120b1' alt="icon"/>
+            <img src='https://pics.freeicons.io/uploads/icons/png/10412341841540553610-512.png' alt="icon"/>
           </a>
         </div>
       </div>

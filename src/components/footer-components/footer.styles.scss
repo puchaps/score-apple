@@ -16,7 +16,7 @@
       opacity: 0.8;
 
       &:hover {
-        transform: scale(1.1);
+        animation: animTranslate 1s ease;
         opacity: 1;
       }
     }
@@ -28,9 +28,10 @@
     margin-top: 5px;
     display: flex;
     justify-content: space-between;
-
+    
     .text {
       opacity: 0.6;
+      transition: all 0.5s;
 
       &:hover {
         opacity: 0.9;
@@ -44,5 +45,20 @@
     margin-top: 5px;
     opacity: 0.4;
     padding-bottom: 10px;
+  }
+};
+
+@keyframes animTranslate {
+  0%{
+    transform: translateY(0);
+  }
+  33%{
+    transform: translateY(-3px);
+  }
+  66%{
+    transform: translateY(3px);
+  }
+  100%{
+    transform: translateY(0);
   }
 }
