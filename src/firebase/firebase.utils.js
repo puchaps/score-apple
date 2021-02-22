@@ -1,6 +1,8 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
+import firebase from "firebase/app"
+import "firebase/auth"
+import "firebase/firestore"
 
 const config = {
   apiKey: "AIzaSyD3TNha-nKxfgWumBsOU7HfsufdhsW2Wm0",
@@ -9,94 +11,93 @@ const config = {
   storageBucket: "score-apple.appspot.com",
   messagingSenderId: "852500730159",
   appId: "1:852500730159:web:7dfa5961143d41ea1311da",
-  measurementId: "G-MQ780Y8SCR"
-};
+  measurementId: "G-MQ780Y8SCR",
+}
 
-firebase.initializeApp(config);
+firebase.initializeApp(config)
 
-export const AUTH = firebase.auth();
-export const FIRE_STORE = firebase.firestore();
+export const AUTH = firebase.auth()
+export const FIRE_STORE = firebase.firestore()
 
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 googleProvider.setCustomParameters({
-  prompt: 'select_account'
-});
+  prompt: "select_account",
+})
 
 export const createUserAuthInFireStore = async (userAuth, otherData) => {
-  if (!userAuth) return;
+  if (!userAuth) return
 
-  const userRef = FIRE_STORE.doc(`users/${userAuth.uid}`);
-  const snapShot = await userRef.get();
+  const userRef = FIRE_STORE.doc(`users/${userAuth.uid}`)
+  const snapShot = await userRef.get()
 
   if (!snapShot.exists) {
-    const{displayName, email} = userAuth;
-    const createDete = new Date();
+    const { displayName, email } = userAuth
+    const createDate = new Date()
 
-    try{
+    try {
       await userRef.set({
         displayName,
         email,
-        createDete,
-        ...otherData
-      });
-    } catch(error) {
-      console.log(error.massege);
+        createDate,
+        ...otherData,
+      })
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
-  return userRef;
+  return userRef
 }
 
-export const addCollectionAndDocumentsInFiresote = async (nameCollection, addDocoments) => {
-  const collectionRef = FIRE_STORE.collection(nameCollection);
+export const addCollectionInFireStore = (nameCollection, documents) => {
+  const collectionRef = FIRE_STORE.collection(nameCollection)
 
-  const batch = FIRE_STORE.batch();
+  const batch = FIRE_STORE.batch()
 
-  addDocoments.forEach(item => {
-    const itemRef = collectionRef.doc();
-    batch.set(itemRef, item);
-  });
+  documents.forEach((item) => {
+    const itemRef = collectionRef.doc()
+    batch.set(itemRef, item)
+  })
 
-  return await batch.commit();
+  return batch.commit()
 }
 
 export const getCollections = (snapShotCollections) => {
-  const transformGetedCollection = snapShotCollections.docs.map(item => {
-    const{title, imageUrl, items} = item.data();
-    
+  const transformCollection = snapShotCollections.docs.map((item) => {
+    const { title, imageUrl, items } = item.data()
+
     return {
       title,
       imageUrl,
       routeName: title.toLowerCase(),
       id: item.id,
-      items
+      items,
     }
-  });
-
-  return transformGetedCollection;
-} 
-
-export const getCollectionsSnapShot = () => {
-  return new Promise((resolve, reject) => {
-    const collectionRef = FIRE_STORE.collection('collections');
-    const snapShotCollections = collectionRef.get();
-    
-    snapShotCollections.then((snapShot) => {
-      resolve(snapShot);
-    }, reject);
   })
+
+  return transformCollection
 }
 
-export const getUserAuthSesion = () => {
-  return new Promise((resolve, reject) => {
+export const getCollectionsSnapShot = () =>
+  new Promise((resolve, reject) => {
+    const collectionRef = FIRE_STORE.collection("collections")
+    const snapShotCollections = collectionRef.get()
+
+    snapShotCollections.then((snapShot) => {
+      resolve(snapShot)
+    }, reject)
+  })
+
+export const getUserAuthSession = () =>
+  new Promise((resolve, reject) => {
     const unSubscribe = AUTH.onAuthStateChanged((userAuth) => {
-      unSubscribe();
-      resolve(userAuth);
-    }, reject);
-  });
-};
+      unSubscribe()
+      resolve(userAuth)
+    }, reject)
+  })
 
-export const signInWithGoogleAcount = () => AUTH.signInWithPopup(googleProvider);
+export const signInWithGoogleAccount = () =>
+  AUTH.signInWithPopup(googleProvider)
 
-export default firebase;
+export default firebase

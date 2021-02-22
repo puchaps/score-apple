@@ -1,13 +1,22 @@
-import { GET_COLLECTIONS_FAILED, GET_COLLECTIONS_START, GET_COLLECTIONS_SUCCSES } from "../types/shop.types";
+import {
+  GET_COLLECTIONS_FAILED,
+  GET_COLLECTIONS_START,
+  GET_COLLECTIONS_SUCCESS,
+  TOGGLE_LOADER,
+} from "../types/shop.types"
 
-export const getCollectionStartAC= () => ({
+export const getCollectionStartAC = () => ({
   type: GET_COLLECTIONS_START,
-});
-export const getCollectionSuccsesAC = (collections) => ({
-  type: GET_COLLECTIONS_SUCCSES,
-  payload: collections
-});
+})
+export const getCollectionSuccessAC = (collections) => ({
+  type: GET_COLLECTIONS_SUCCESS,
+  payload: collections,
+})
 export const getCollectionFailedAC = (error) => ({
   type: GET_COLLECTIONS_FAILED,
-  payload: error
-});
+  payload: error,
+})
+
+export const toggleLoaderAC = () => ({
+  type: TOGGLE_LOADER,
+})

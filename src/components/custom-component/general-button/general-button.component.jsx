@@ -1,11 +1,14 @@
-import './general-button.styles.scss';
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react"
 
-const GeneralButton = ({children, typeBtn = '', ...otherProps}) => {
-  return(
-    <button className = {`general-button ${typeBtn}`} {...otherProps}>
-      {children}
-    </button>
-  )
-};
+import "./general-button.styles.scss"
 
-export default GeneralButton;
+const GeneralButton = ({ children, onTypeBtn = "", ...otherProps }) => (
+  <button className={`general-button ${onTypeBtn}`} {...otherProps}>
+    {children}
+  </button>
+)
+
+export default GeneralButton

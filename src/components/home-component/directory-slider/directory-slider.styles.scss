@@ -1,0 +1,25 @@
+.directory-slider {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 10vh;
+  overflow: hidden;
+  border: 0.1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 15px black;
+  animation: animationSlider 0.5s ease-out;
+}
+
+@keyframes animationSlider {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+
+
+
+

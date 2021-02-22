@@ -6,6 +6,7 @@
   align-items: center;
   cursor: pointer;
   transition: all 0.5s;
+  animation: animationItem 0.4s ease-out;
   
   &:hover {
     opacity: 0.8;
@@ -35,11 +36,16 @@
       font-size: 16px;
     }
   }
+
+  .collection-item-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 .collection-item.iphone {
   height: 300px;
-  width: 150px;
+  width: 140px;
 
   .img {
     width: 100%;
@@ -48,7 +54,7 @@
 
 .collection-item.macbock {
   height: 240px;
-  width: 220px;
+  width: 210px;
 
   .img {
     width: 100%;
@@ -95,3 +101,15 @@
     width: 200px;
   }
 }
+
+@keyframes animationItem {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+

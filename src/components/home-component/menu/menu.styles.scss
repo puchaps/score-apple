@@ -1,8 +1,19 @@
-.menu-main {
-  width: 100%;
-  margin-top: 20px;
+.menu {
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
+  animation: animationLinkMenu 0.3s ease-out;
+}
+
+@keyframes animationLinkMenu {
+  0% {
+    opacity: 0;
+    transform: translateX(20px)
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px)
+  }
 }
 
 

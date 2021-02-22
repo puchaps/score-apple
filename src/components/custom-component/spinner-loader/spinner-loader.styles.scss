@@ -1,0 +1,16 @@
+.spinner-loader {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 20vh;
+  opacity: 0.8;
+  animation: animationLoader 1s ease-out infinite;
+}
+@keyframes animationLoader {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

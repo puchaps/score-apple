@@ -1,29 +1,25 @@
 .general-button {
-  min-width: 140px;
-  margin-top: 10px;
-  width: auto;
-  height: 50px;
-  letter-spacing: 0.5px;
-  line-height: 50px;
-  padding: 0 20px;
+  width: 100%;
+  height: 35px;
   font-size: 13px;
   text-transform: uppercase;
   font-weight: 500;
-  border: 1px solid  #231f20;
+  border: none;
   transition: all 0.5s;
-  background-color: #231f20;
+  background-color: #ff7b00;
   color: white;
   cursor: pointer;
   opacity: 0.8;
-
+  
   &:hover {
-    background-color: #231f20;
-    box-shadow: 0 4px 5px #231f20;
+    background-color: #ff7b00;
+    box-shadow: 0 1px 15px #000;
     opacity: 1;
+    animation: animationBtnHover 0.5s ease-out;
   }
 
   &.google {
-    background-color: #e13f2a;
+    background-color: #da3d28;
     color: white;
   }
 
@@ -43,5 +39,16 @@
     background-color: #e13f2a;
     color: white;
   }
-  
+}
+
+@keyframes animationBtnHover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

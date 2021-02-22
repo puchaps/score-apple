@@ -1,32 +1,27 @@
-import { connect } from 'react-redux';
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-props-no-spreading */
+import React from "react"
+import { connect } from "react-redux"
 
-import './collection-all.styles.scss';
+import "./collection-all.styles.scss"
 
-import { selectorCollections } from '../../../redux/reducers/shop-reducer/selectors/shop.selectors';
+import { selectorCollections } from "../../../redux/reducers/shop-reducer/selectors/shop.selectors"
 
-import CollectionPreview from '../collection-preview/collection-preview.component';
+import CollectionPreview from "../collection-preview/collection-preview.component"
 
-const CollectionAll = ({collections}) => {
-  const mapWithUseProducts = collections.map( ({ id, ...otherDataProps}) => (
-    <CollectionPreview key = {id} {...otherDataProps}/>
-  ));
-
-  return(
-    <div className="collection-all">
-      <div className="title">
-        <h1>ALL CATALOG</h1>
-      </div>
-      <div className="all-products">
-        {mapWithUseProducts}
-      </div>
+const CollectionAll = ({ onCollections }) => (
+  <div className="collection-all">
+    <div className="collection-all-title">
+      <h1>ALL CATALOG</h1>
     </div>
-  );
-};
+    {onCollections.map(({ id, ...otherDataProps }) => (
+      <CollectionPreview key={id} {...otherDataProps} />
+    ))}
+  </div>
+)
 
 const mapStateToProps = (state) => ({
-  collections: selectorCollections(state)
-});
+  onCollections: selectorCollections(state),
+})
 
-export default connect(
-  mapStateToProps
-)(CollectionAll);
+export default connect(mapStateToProps)(CollectionAll)

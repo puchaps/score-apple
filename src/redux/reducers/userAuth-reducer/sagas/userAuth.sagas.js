@@ -1,130 +1,143 @@
-import { takeLatest, put, call, all } from 'redux-saga/effects';
+/* eslint-disable spaced-comment */
+import { takeLatest, put, call, all } from "redux-saga/effects"
 
-import { 
-  AUTH, googleProvider,
-  createUserAuthInFireStore, getUserAuthSesion 
-} from '../../../../firebase/firebase.utils';
+import {
+  AUTH,
+  googleProvider,
+  createUserAuthInFireStore,
+  getUserAuthSession,
+} from "../../../../firebase/firebase.utils"
 
-import { 
-  checkUserSesionFailedAC,
+import {
+  checkUserSessionFailedAC,
   createUserEmailAndPasswordFailedAC,
   signInWithEmailPasswordFailedAC,
-  signInWithGoogleFailedAC, 
-  signInWithGoogleSuccsesAC,
+  signInWithGoogleFailedAC,
+  signInWithGoogleSuccessAC,
   signOutFailedAC,
-  signOutSuccsesAC
-} from '../actions/userAuth.actions';
+  signOutSuccessAC,
+  toggleLoaderAC,
+} from "../actions/userAuth.actions"
 
-import { 
-  CHECK_USER_SESION_START,
+import {
+  CHECK_USER_SESSION_START,
   CREATE_USER_EMAIL_AND_PASSWORD_START,
-  SIGN_IN_WITH_EMAIL_PASSWODR_START,
+  SIGN_IN_WITH_EMAIL_PASSWORD_START,
   SIGN_IN_WITH_GOOGLE_START,
   SIGN_OUT_START,
-} from '../types/userAuth.types';
+} from "../types/userAuth.types"
 
 ////////////////--UTILS--////////////////
 function* utilsForCreateUserForFireBase(userAuth, otherData) {
-  try{
-    const userRef = yield call(createUserAuthInFireStore, userAuth, otherData);
-    const snapShot = yield userRef.get();
+  try {
+    const userRef = yield call(createUserAuthInFireStore, userAuth, otherData)
+    const snapShot = yield userRef.get()
 
-    yield put(signInWithGoogleSuccsesAC({ id: userRef.id, ...snapShot.data() }));
-  } catch(error) {
-    yield put(signInWithGoogleFailedAC(error));
+    yield put(signInWithGoogleSuccessAC({ id: userRef.id, ...snapShot.data() }))
+  } catch (error) {
+    yield put(signInWithGoogleFailedAC(error))
   }
 }
 ////////////////--UTILS--////////////////
 
-
 ////////////////--SIGN_GOOGLE--////////////////
 function* signInWithGoogle() {
-  try{
-    const{user} = yield AUTH.signInWithPopup(googleProvider);
-    
-    yield utilsForCreateUserForFireBase(user);
-  } catch(error) {
+  try {
+    const { user } = yield AUTH.signInWithPopup(googleProvider)
+
+    yield utilsForCreateUserForFireBase(user)
+  } catch (error) {
     yield put(signInWithGoogleFailedAC(error))
   }
-};
+}
 
-function* onsignInWithGoogleStart() {
+function* onSignInWithGoogleStart() {
   yield takeLatest(SIGN_IN_WITH_GOOGLE_START, signInWithGoogle)
-};
+}
 ////////////////--SIGN_GOOGLE--////////////////
 
-
-////////////////--SIGN_EMAIL_PASSWODR--////////////////
+////////////////--SIGN_EMAIL_PASSWORD--////////////////
 function* signInWithEmailPassword({ payload: { email, password } }) {
-  try{
-    const{user} = yield AUTH.signInWithEmailAndPassword(email, password);
+  try {
+    yield put(toggleLoaderAC())
 
-    yield utilsForCreateUserForFireBase(user);
-  } catch(error) {
+    const { user } = yield AUTH.signInWithEmailAndPassword(email, password)
+
+    yield utilsForCreateUserForFireBase(user)
+    yield put(toggleLoaderAC())
+  } catch (error) {
     yield put(signInWithEmailPasswordFailedAC(error))
+    yield put(toggleLoaderAC())
   }
 }
-function* onSignInWithEmailPasswodStart() {
-  yield takeLatest(SIGN_IN_WITH_EMAIL_PASSWODR_START, signInWithEmailPassword);
-}
-////////////////--SIGN_EMAIL_PASSWODR--////////////////
 
+function* onSignInWithEmailPasswordStart() {
+  yield takeLatest(SIGN_IN_WITH_EMAIL_PASSWORD_START, signInWithEmailPassword)
+}
+////////////////--SIGN_EMAIL_PASSWORD--////////////////
 
 ////////////////--SIGN_OUT--////////////////
 function* signOut() {
   try {
-    yield AUTH.signOut();
+    yield AUTH.signOut()
 
-    yield put(signOutSuccsesAC());
-  } catch(error) {
-    yield put(signOutFailedAC(error));
+    yield put(signOutSuccessAC())
+  } catch (error) {
+    yield put(signOutFailedAC(error))
   }
-};
+}
 function* onSignOutStart() {
-  yield takeLatest(SIGN_OUT_START, signOut);
+  yield takeLatest(SIGN_OUT_START, signOut)
 }
 ////////////////--SIGN_OUT--////////////////
 
-
 ////////////////--CREATE_USER_EMAIL_PASSWORD--////////////////
-function* createUserEmailPassword({payload: { email, password, displayName}}) {
+function* createUserEmailPassword({
+  payload: { email, password, displayName },
+}) {
   try {
-    const{user} = yield AUTH.createUserWithEmailAndPassword(email, password);
+    yield put(toggleLoaderAC())
 
-    yield utilsForCreateUserForFireBase(user, {displayName});
-  } catch(error) {
-    yield put(createUserEmailAndPasswordFailedAC(error));
+    const { user } = yield AUTH.createUserWithEmailAndPassword(email, password)
+
+    yield utilsForCreateUserForFireBase(user, { displayName })
+    yield put(toggleLoaderAC())
+  } catch (error) {
+    yield put(createUserEmailAndPasswordFailedAC(error))
+    yield put(toggleLoaderAC())
   }
 }
 function* onCreateUserEmailPasswordStart() {
-  yield takeLatest(CREATE_USER_EMAIL_AND_PASSWORD_START, createUserEmailPassword);
+  yield takeLatest(
+    CREATE_USER_EMAIL_AND_PASSWORD_START,
+    createUserEmailPassword
+  )
 }
 ////////////////--CREATE_USER_EMAIL_PASSWORD--////////////////
 
+////////////////--CHECK_SESSION--////////////////
+function* checkUserSession() {
+  try {
+    const userAuth = yield getUserAuthSession()
 
-////////////////--CHECK_SESION--////////////////
-function* checkUserSesion() {
-  try{
-    const userAuth= yield getUserAuthSesion();
+    if (!userAuth) return
 
-    if (!userAuth) return;
-
-    yield utilsForCreateUserForFireBase(userAuth);
-  } catch(error) {
-    yield put(checkUserSesionFailedAC(error));
+    yield utilsForCreateUserForFireBase(userAuth)
+  } catch (error) {
+    yield put(checkUserSessionFailedAC(error))
   }
 }
-function* onCheckUserSesionStart() {
-  yield takeLatest(CHECK_USER_SESION_START, checkUserSesion)
+function* onCheckUserSessionStart() {
+  yield takeLatest(CHECK_USER_SESSION_START, checkUserSession)
 }
-////////////////--CHECK_SESION--////////////////
+////////////////--CHECK_SESSION--////////////////
 
 export default function* userSagas() {
   yield all([
-    call(onsignInWithGoogleStart),
-    call(onSignInWithEmailPasswodStart),
+    call(onSignInWithGoogleStart),
+    call(onSignInWithEmailPasswordStart),
     call(onSignOutStart),
     call(onCreateUserEmailPasswordStart),
-    call(onCheckUserSesionStart)
-  ]);
-};
+    call(onCheckUserSessionStart),
+  ])
+}

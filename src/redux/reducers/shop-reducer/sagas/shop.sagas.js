@@ -1,26 +1,34 @@
-import { takeLatest, all, call, put } from 'redux-saga/effects';
+import { takeLatest, all, call, put } from "redux-saga/effects"
 
-import { getCollections, getCollectionsSnapShot } from '../../../../firebase/firebase.utils';
-import { getCollectionFailedAC, getCollectionSuccsesAC } from '../actions/shop.actions';
-import { GET_COLLECTIONS_START } from '../types/shop.types';
+import {
+  getCollections,
+  getCollectionsSnapShot,
+} from "../../../../firebase/firebase.utils"
+import {
+  getCollectionFailedAC,
+  getCollectionSuccessAC,
+  toggleLoaderAC,
+} from "../actions/shop.actions"
+import { GET_COLLECTIONS_START } from "../types/shop.types"
 
-function* getCollectiosFromFirestore() {
+function* getCollectionsFromFireStore() {
   try {
-    const snapShot = yield getCollectionsSnapShot();
+    yield put(toggleLoaderAC())
 
-    const converdCollections = yield call(getCollections, snapShot);
-    
-    yield put(getCollectionSuccsesAC(converdCollections));
-  } catch(error) {
-    yield put(getCollectionFailedAC(error));
+    const snapShot = yield call(getCollectionsSnapShot)
+
+    const transformCollections = yield call(getCollections, snapShot)
+
+    yield put(getCollectionSuccessAC(transformCollections))
+    yield put(toggleLoaderAC())
+  } catch (error) {
+    yield put(getCollectionFailedAC(error))
   }
 }
-function* onGetCollectionsFromFirestore() {
-  yield takeLatest(GET_COLLECTIONS_START, getCollectiosFromFirestore);
+function* onGetCollectionsFromFireStore() {
+  yield takeLatest(GET_COLLECTIONS_START, getCollectionsFromFireStore)
 }
 
 export default function* shopSagas() {
-  yield all([
-    call(onGetCollectionsFromFirestore)
-  ])
+  yield all([call(onGetCollectionsFromFireStore)])
 }

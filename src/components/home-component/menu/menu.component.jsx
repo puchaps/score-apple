@@ -1,30 +1,25 @@
-import { connect } from 'react-redux';
+/* eslint-disable react/prop-types */
+import React from "react"
+import { connect } from "react-redux"
 
-import './menu.styles.scss';
+import "./menu.styles.scss"
 
-import { selectorCollections } from '../../../redux/reducers/shop-reducer/selectors/shop.selectors';
+import { selectorCollections } from "../../../redux/reducers/shop-reducer/selectors/shop.selectors"
 
-import MenuItem from '../menu-item/menu-item.component';
+import MenuItem from "../menu-item/menu-item.component"
 
-const Menu = ({collections}) => {
-  const getComponnetFromCatalog = collections.map(({title, id}) => {
-    return <MenuItem key = {id} title = {title}/>
-  });
-
-  return(
-    <menu >
-      <div className="menu-main">
-        {getComponnetFromCatalog}
-      </div>
-    </menu>
-    
-  )
-};
+const Menu = ({ onCollections }) => (
+  <menu>
+    <div className="menu">
+      {onCollections.map(({ title, id }) => (
+        <MenuItem key={id} title={title} />
+      ))}
+    </div>
+  </menu>
+)
 
 const mapStateToProps = (state) => ({
-  collections: selectorCollections(state)
+  onCollections: selectorCollections(state),
 })
 
-export default connect(
-  mapStateToProps
-)(Menu);
+export default connect(mapStateToProps)(Menu)

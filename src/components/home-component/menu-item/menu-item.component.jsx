@@ -1,15 +1,21 @@
-import './menu-item.styles.scss';
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/prop-types */
+import React from "react"
 
-import { withRouter } from 'react-router';
+import "./menu-item.styles.scss"
 
-const MenuItem = ({title, history}) => {
-  return(
+import { useHistory } from "react-router"
+
+const MenuItem = ({ title }) => {
+  const history = useHistory()
+
+  return (
     <div className="menu-item">
-      <div className="btn">
-        <button onClick = {() => history.push(`/shop/${title}`)}>{title}</button>
-      </div>
+      <button onClick={() => history.push(`/shop/${title}`)} type="button">
+        {title}
+      </button>
     </div>
   )
-};
+}
 
-export default withRouter(MenuItem);
+export default MenuItem

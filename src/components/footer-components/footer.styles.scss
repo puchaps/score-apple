@@ -1,50 +1,28 @@
 .footer {
-  width: 1130px;
+  width: 150px;
   margin: 0 auto;
-  padding-top: 20px;
+  margin-top: 50px;
+  padding-bottom: 10px;
+  animation: animationLink 0.3s ease-out;
 
   .footer-icon {
-    width: 100px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 
     .icon img {
-      width: 30px;
-      height: 30px;
-      transition: all 0.4s;
-      opacity: 0.8;
-
+      width: 40px;
+      height: 40px;
+    
       &:hover {
         animation: animTranslate 1s ease;
-        opacity: 1;
-      }
-    }
-  }
-
-  .footer-text {
-    width: 130px;
-    margin: 0 auto;
-    margin-top: 5px;
-    display: flex;
-    justify-content: space-between;
-    
-    .text {
-      opacity: 0.6;
-      transition: all 0.5s;
-
-      &:hover {
-        opacity: 0.9;
       }
     }
   }
 
   .footer-year {
-    width: 50px;
-    margin: 0 auto;
-    margin-top: 5px;
+    text-align: center;
+    margin-top: 20px;
     opacity: 0.4;
-    padding-bottom: 10px;
   }
 };
 
@@ -60,5 +38,16 @@
   }
   100%{
     transform: translateY(0);
+  }
+}
+
+@keyframes animationLink {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }

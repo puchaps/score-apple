@@ -1,19 +1,23 @@
-import { createSelector } from "reselect";
+/* eslint-disable no-debugger */
+import { createSelector } from "reselect"
 
-const selectorShop = (state) => state.shop;
+const selectorShop = (state) => state.shop
 
-export const selectorCollections = createSelector(
-  [selectorShop],
-  (shop) => shop.collections
-);
+export const selectorCollections = createSelector([selectorShop], (shop) =>
+  shop.collections ? shop.collections : []
+)
 
-export const selectorGetCoosedCollection = getChoosedCollection => (
+export const selectorChosenCollection = (chosenCollection) =>
   createSelector(
     [selectorCollections],
-    (collections) => collections.find(item => {
-      if (item.title.toLowerCase() === getChoosedCollection.toLowerCase()) {
-        return item;
-      };
-    })
+    (collections) =>
+      collections.length > 1 &&
+      collections.find(
+        (item) => item.title.toLowerCase() === chosenCollection.toLowerCase()
+      )
   )
-);
+
+export const selectorLoader = createSelector(
+  [selectorShop],
+  (shop) => shop.loader
+)

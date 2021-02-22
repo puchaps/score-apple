@@ -1,23 +1,24 @@
 .header {
+  width: 80%;
   height: 70px;
-  width: 90%;
   margin: 0 auto;
-  margin-top: 20px;
+  padding: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  .container-logo {
+  .header-logo {
     height: 100%;
-    width: 40px;;
+    width: 45px;
+    animation: animationHoverLogo 1s ease-out infinite;
+
+    .logo {
+      width: 100%;
+    }
   }
 
-  .logo {
-    width: 100%;
-  }
-
-  .nav-link {
-    position: relative;
+  .header-link {
     height: 100%;
     display: flex;
     align-items: center;
@@ -26,16 +27,43 @@
     &:first-child {
       padding: 0;
     }
-    
+
     .link, .sign-out {
-      padding: 5px 5px 3px 5px;
-      opacity: 0.7;
+      padding-right: 10px;
+      opacity: 0.8;
       cursor: pointer;
 
       &:hover {
         opacity: 1;
-        border-bottom: 1px solid #231f20;
+        animation: animationHover 0.5s ease-out;
       }
     }
+  }
+}
+
+@keyframes animationHover {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes animationHoverLogo {
+  0% {
+    transform: rotate(0);
+  }
+  33% {
+    transform: rotate(5deg);
+  }
+  66% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0);
   }
 }

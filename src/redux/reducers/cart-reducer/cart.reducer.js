@@ -1,40 +1,46 @@
-import { 
-  ADD_ITEM_TO_CART, REDUCE_CHOOSED_VALUE_IN_ITEM, REMOVE_CHOOSED_ITEM_FROM_CART, 
-  TOGGLE_CAR_HIDDEN
-} from "./types/cart.types";
+import {
+  ADD_ITEM_TO_CART,
+  REDUCE_CHOSEN_VALUE_IN_ITEM,
+  REMOVE_CHOSEN_ITEM_FROM_CART,
+  TOGGLE_CAR_HIDDEN,
+} from "./types/cart.types"
 
-import { reduceChoosedItemFromCart, removeChoosedItemFromCart, verifyAddItemToCart } from './utils/cart.utils';
+import {
+  reduceChosenItemFromCart,
+  removeChosenItemFromCart,
+  verifyAddItemToCart,
+} from "./utils/cart.utils"
 
 const INITIAL_STATE = {
   hidden: false,
-  cartItems: []
-};
+  cartItems: [],
+}
 
 const cartReducer = (state = INITIAL_STATE, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case TOGGLE_CAR_HIDDEN:
       return {
         ...state,
-        hidden: !state.hidden
+        hidden: !state.hidden,
       }
     case ADD_ITEM_TO_CART:
       return {
         ...state,
-        cartItems: verifyAddItemToCart(state.cartItems, action.payload)
+        cartItems: verifyAddItemToCart(state.cartItems, action.payload),
       }
-    case REMOVE_CHOOSED_ITEM_FROM_CART:
+    case REMOVE_CHOSEN_ITEM_FROM_CART:
       return {
         ...state,
-        cartItems: removeChoosedItemFromCart(state.cartItems, action.payload)
+        cartItems: removeChosenItemFromCart(state.cartItems, action.payload),
       }
-    case REDUCE_CHOOSED_VALUE_IN_ITEM:
+    case REDUCE_CHOSEN_VALUE_IN_ITEM:
       return {
         ...state,
-        cartItems: reduceChoosedItemFromCart(state.cartItems, action.payload)
+        cartItems: reduceChosenItemFromCart(state.cartItems, action.payload),
       }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default cartReducer;
+export default cartReducer

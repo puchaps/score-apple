@@ -1,62 +1,47 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+/* eslint-disable react/prop-types */
+import React, { useCallback, useEffect } from "react"
+import { connect } from "react-redux"
 
-import './App.styles.scss';
+import { checkUserSessionStartAC } from "./redux/reducers/userAuth-reducer/actions/userAuth.actions"
+import { getCollectionStartAC } from "./redux/reducers/shop-reducer/actions/shop.actions"
+import { selectorLoader } from "./redux/reducers/shop-reducer/selectors/shop.selectors"
 
-import { checkUserSesionStartAC } from './redux/reducers/userAuth-reducer/actions/userAuth.actions';
-import { getCollectionStartAC } from './redux/reducers/shop-reducer/actions/shop.actions';
-import { selectorCollections } from './redux/reducers/shop-reducer/selectors/shop.selectors';
+import Header from "./components/header-component/header/header.component"
+import SpinnerLoader from "./components/custom-component/spinner-loader/spinner-loader.component"
+import Footer from "./components/footer-components/footer.component"
+import SwitchRoute from "./components/switch-route/switch-route.component"
 
-import HomePage from './pages/home-page/home-page.component';
-import ShopPage from './pages/shop-page/shop-page.component';
-import AuthorizationPage from './pages/authorization-page/authorization-page.component';
-import Header from './components/header-component/header/header.component';
-import CheckoutPage from './pages/checkout-page/checkout-page.component';
-import SpinnerWrapper from './components/custom-component/spinner-wrapper/spinner-wrapper.component';
-import Footer from './components/footer-components/footer.component';
+const App = ({
+  onLoader,
+  handleUserSessionStart,
+  handleGetCollectionStart,
+}) => {
+  const handleUseEffect = useCallback(() => {
+    handleUserSessionStart()
+    handleGetCollectionStart()
+  }, [handleUserSessionStart, handleGetCollectionStart])
 
+  useEffect(() => {
+    handleUseEffect()
+  }, [handleUseEffect])
 
-class App extends React.Component{
-  componentDidMount = () => {
-    const{checkUserSesionStart, getCollectionStart} = this.props;
-    
-    getCollectionStart();
-    checkUserSesionStart();
-  };
-
-  render() {
-    const{collections} = this.props;
-    
-    if (!collections) {
-      return <SpinnerWrapper/>
-    };
-
-    return (
-      <div className = 'app'>
-        <Header/>
-        <Switch>
-          <Route exact path = '/' component = {HomePage}/>
-          <Route  path = '/shop' component = {ShopPage}/>
-          <Route exact path = '/login' component = {AuthorizationPage}/>
-          <Route exact path = '/checkout' component = {CheckoutPage}/>
-        </Switch>
-        <Footer/>
-      </div>
-    );
-  }
+  return (
+    <SpinnerLoader onLoader={onLoader}>
+      <Header />
+      <SwitchRoute />
+      <Footer />
+    </SpinnerLoader>
+  )
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  checkUserSesionStart: () => dispatch(checkUserSesionStartAC()),
-  getCollectionStart: (collections) => dispatch(getCollectionStartAC(collections))
+  handleUserSessionStart: () => dispatch(checkUserSessionStartAC()),
+  handleGetCollectionStart: (collections) =>
+    dispatch(getCollectionStartAC(collections)),
 })
 
-const mapStateToProps = state => ({
-  collections: selectorCollections(state)
-});
+const mapStateToProps = (state) => ({
+  onLoader: selectorLoader(state),
+})
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App)

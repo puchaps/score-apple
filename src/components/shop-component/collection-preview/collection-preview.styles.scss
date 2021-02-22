@@ -1,22 +1,22 @@
 .collection-preview {
-  width: 80%;
-  margin: 0 auto;
+  width: 75%;
+  margin:  0 auto;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
 
   .title {
-    min-width: 100px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
+    width: 100px;
     margin: 0 auto;
     margin-bottom: 25px;
-    opacity: 0.6;
-    cursor: pointer;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    opacity: 0.8;
     transition: all 0.5s;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0, 0, 0, 0.06);
     border-radius: 3px;
+    cursor: pointer;
 
     &:hover {
       opacity: 0.9;
