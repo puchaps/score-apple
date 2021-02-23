@@ -51,3 +51,33 @@
     transform: translateY(0px);
   }
 }
+
+@media screen and(max-width: 1024px) {
+  .footer {
+    width: 100px;
+
+    .footer-icon {
+      .icon img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .footer-year {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .footer {
+    width: 80px;
+
+    .footer-icon {
+      .icon img {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

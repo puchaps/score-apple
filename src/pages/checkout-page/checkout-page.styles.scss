@@ -27,3 +27,23 @@
     transform: scale(1);
   }
 }
+
+@media screen and(max-width: 1440px) {
+  .checkout-page {
+    width: 70%;
+
+    .checkout-total {
+      font-size: 30px;
+    }
+  }
+}
+
+@media screen and(max-width: 1024px) {
+  .checkout-page {
+    width: 80%;
+
+    .checkout-total {
+      font-size: 25px;
+    }
+  }
+}

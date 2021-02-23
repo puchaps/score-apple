@@ -7,17 +7,13 @@
   cursor: pointer;
   transition: all 0.5s;
   animation: animationItem 0.4s ease-out;
-  
+
   &:hover {
     opacity: 0.8;
 
     button {
       display: block;
     }
-  }
-
-  .img {
-    width: 200px;
   }
 
   .collection-footer {
@@ -50,7 +46,7 @@
   .img {
     width: 100%;
   }
-} 
+}
 
 .collection-item.macbock {
   height: 240px;
@@ -64,7 +60,6 @@
     width: 100%;
     margin-top: 20px;
   }
-
 }
 
 .collection-item.ipad {
@@ -88,13 +83,14 @@
   .collection-footer {
     width: 200px;
   }
-} 
+}
 
 .collection-item.applewatch {
   height: 305px;
+  width: 160px;
 
-  .img  {
-    width: 160px;
+  .img {
+    width: 100%;
   }
 
   .collection-footer {
@@ -113,3 +109,171 @@
   }
 }
 
+@media screen and(max-width: 1440px) {
+  .collection-item.iphone {
+    height: 300px;
+    width: 140px;
+  }
+
+  .collection-item.macbock {
+    height: 200px;
+    width: 160px;
+  }
+
+  .collection-item.ipad {
+    height: 250px;
+    width: 150px;
+
+    .collection-footer {
+      width: 150px;
+    }
+  }
+
+  .collection-item.applewatch {
+    height: 260px;
+    width: 140px;
+
+    .collection-footer {
+      width: 170px;
+    }
+  }
+
+  .collection-item.airpods {
+    height: 220px;
+    width: 120px;
+
+    .img {
+      width: 100%;
+      object-fit: cover;
+      background-size: auto;
+    }
+
+    .collection-footer {
+      width: 200px;
+    }
+  }
+
+  .collection-item {
+    .collection-footer {
+      .price {
+        font-size: 16px;
+      }
+
+      .name {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 1024px) {
+  .collection-item.iphone {
+    height: 320px;
+    width: 170px;
+  }
+
+  .collection-item.macbock {
+    height: 230px;
+    width: 180px;
+
+    .collection-footer {
+      width: 220px;
+    }
+  }
+
+  .collection-item.ipad {
+    height: 305px;
+    width: 170px;
+
+    .collection-footer {
+      width: 250px;
+    }
+  }
+
+  .collection-item.applewatch {
+    height: 305px;
+    width: 170px;
+
+    .collection-footer {
+      width: 220px;
+    }
+  }
+
+  .collection-item.airpods {
+    height: 270px;
+    width: 180px;
+
+    .img {
+      width: 100%;
+    }
+
+    .collection-footer {
+      width: 200px;
+    }
+  }
+}
+
+@media screen and(max-width: 640px) {
+  .collection-item.iphone {
+    height: 350px;
+    width: 180px;
+    margin: 0 auto;
+  }
+
+  .collection-item.macbock {
+    height: 280px;
+    width: 250px;
+    margin: 0 auto;
+
+    .collection-footer {
+      width: 300px;
+    }
+  }
+
+  .collection-item.ipad {
+    height: 340px;
+    width: 190px;
+    margin: 0 auto;
+
+    .collection-footer {
+      width: 300px;
+    }
+  }
+
+  .collection-item.applewatch {
+    height: 350px;
+    width: 180px;
+    margin: 0 auto;
+
+    .collection-footer {
+      width: 300px;
+    }
+  }
+
+  .collection-item.airpods {
+    height: 300px;
+    width: 170px;
+    margin: 0 auto;
+
+    .img {
+      width: 100%;
+      height: 170px;
+    }
+
+    .collection-footer {
+      width: 250px;
+    }
+  }
+
+  .collection-item {
+    .collection-footer {
+      .price {
+        font-size: 20px;
+      }
+
+      .name {
+        font-size: 17px;
+      }
+    }
+  }
+}

@@ -60,3 +60,35 @@
     transform: translateX(0);
   }
 }
+
+@media screen and(max-width: 1024px) {
+  .sign-in {
+    .sign-in-title {
+      font-size: 20px;
+    }
+
+    .sign-in-subtitle {
+      font-size: 14px;
+    }
+
+    .sign-in-form {
+      .sign-in-input {
+        font-size: 13px;
+        margin-top: 20px;
+      }
+    }
+
+    .sign-in-btns {
+      button {
+        width: 47%;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .sign-in {
+    width: 100%;
+  }
+}

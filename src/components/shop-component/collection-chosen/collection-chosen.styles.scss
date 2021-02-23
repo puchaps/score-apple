@@ -20,12 +20,66 @@
     justify-items: center;
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 30px;
-  
   }
 }
 
 @media screen and(max-width: 1440px) {
   .collection-chosen {
-    width: 80%;
+    padding: 0;
+    width: 85%;
+  }
+}
+
+@media screen and(max-width: 1024px) {
+  .collection-chosen {
+    width: 90%;
+
+    .collection-item.applewatch {
+      .collection-footer {
+        width: 160px;
+      }
+    }
+
+    .collection-item.macbock {
+      .collection-footer {
+        width: 160px;
+      }
+    }
+
+    .collection {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .collection-chosen {
+    width: 100%;
+
+    .collection-item.applewatch {
+      .collection-footer {
+        width: 200px;
+      }
+    }
+
+    .collection-item.macbock {
+      .collection-footer {
+        width: 220px;
+      }
+    }
+
+    .collection {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and(max-width: 640px) {
+  .collection-chosen {
+    width: 100%;
+
+    .collection {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }

@@ -1,0 +1,31 @@
+.header-mobile-img,
+.header-logo {
+  width: 45px;
+  animation: animationClickLogo 0.5s ease-out;
+
+  .mobile-img,
+  .logo {
+    width: 100%;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .header-logo {
+    display: block;
+  }
+
+  .header-mobile-img {
+    display: none;
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .header-mobile-img {
+    width: 35px;
+    display: block;
+  }
+
+  .header-logo {
+    display: none;
+  }
+}

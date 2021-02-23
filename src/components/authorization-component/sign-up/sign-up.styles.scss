@@ -1,7 +1,8 @@
 .sign-up {
   width: 45%;
+  margin: 0 auto;
   opacity: 0.8;
-  animation: animationInputCreate 0.4s ease-out; 
+  animation: animationInputCreate 0.4s ease-out;
 
   .sign-up-title {
     font-size: 22px;
@@ -54,3 +55,35 @@
   }
 }
 
+@media screen and(max-width: 1024px) {
+  .sign-up {
+    .sign-up-title {
+      font-size: 20px;
+    }
+
+    .sign-up-subtitle {
+      font-size: 14px;
+    }
+
+    .sign-up-form {
+      .sign-up-input {
+        font-size: 13px;
+        margin-top: 20px;
+      }
+    }
+
+    .sign-up-btns {
+      button {
+        width: 47%;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .sign-up {
+    width: 100%;
+    margin-top: 30px;
+  }
+}

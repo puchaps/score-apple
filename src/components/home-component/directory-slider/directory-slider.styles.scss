@@ -19,7 +19,20 @@
   }
 }
 
+@media screen and(max-width: 1440px) {
+  .directory-slider {
+    width: 60%;
+  }
+}
 
+@media screen and(max-width: 768px) {
+  .directory-slider {
+    width: 70%;
+  }
+}
 
-
-
+@media screen and(max-width: 375px) {
+  .directory-slider {
+    width: 85%;
+  }
+}

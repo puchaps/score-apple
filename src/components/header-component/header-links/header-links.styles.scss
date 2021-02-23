@@ -1,0 +1,39 @@
+.header-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &:first-child {
+    padding: 0;
+  }
+
+  .link,
+  .sign-out {
+    padding-right: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+      animation: animationHoverLink 0.5s ease-out;
+    }
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .header-link {
+    .link,
+    .sign-out {
+      font-size: 13px;
+    }
+  }
+}
+
+@media screen and(max-width: 425px) {
+  .header-link {
+    .link,
+    .sign-out {
+      font-size: 12px;
+    }
+  }
+}

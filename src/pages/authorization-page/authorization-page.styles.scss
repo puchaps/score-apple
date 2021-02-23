@@ -5,3 +5,23 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media screen and(max-width: 1024px) {
+  .authorization-page {
+    width: 75%;
+  }
+}
+
+@media screen and(max-width: 768px) {
+  .authorization-page {
+    width: 50%;
+    margin-top: 30px;
+    flex-direction: column;
+  }
+}
+
+@media screen and(max-width: 425px) {
+  .authorization-page {
+    width: 70%;
+  }
+}
